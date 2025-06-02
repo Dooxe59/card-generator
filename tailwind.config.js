@@ -19,6 +19,7 @@ module.exports = {
         nature: "#228B22",
         "nature-light": "#32CD32",
         contract: "#003366",
+        "contract-light": "#4A90E2",
         event: "#6A0DAD",
       },
     },

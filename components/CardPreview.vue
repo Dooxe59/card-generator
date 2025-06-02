@@ -91,36 +91,24 @@
     <!-- Carte Contrat -->
     <div
       v-else-if="cardType === 'contract'"
-      class="w-64 h-96 rounded-xl shadow-2xl relative overflow-hidden bg-gradient-to-br from-blue-800 to-blue-900 border-4 border-blue-700 flex flex-col"
+      class="w-64 h-96 rounded-xl shadow-2xl relative overflow-hidden bg-gradient-to-br from-blue-800 to-blue-900 border-4 border-contract flex flex-col"
     >
       <!-- Header -->
       <div
-        class="bg-black bg-opacity-40 p-3 text-center border-b-2 border-blue-400 flex-shrink-0"
+        class="bg-contract-light bg-opacity-90 p-3 text-center border-b-2 border-contract-light flex-shrink-0"
       >
         <h2 class="text-white font-bold text-lg tracking-wider">
           {{ cardData.name?.toUpperCase() || "CONTRAT" }}
         </h2>
-        <div class="text-blue-200 text-sm font-medium mt-1">
+        <div class="text-blue-100 text-sm font-medium mt-1">
           CONTRAT
           {{ contractLevels[cardData.level]?.name.toUpperCase() || "APPRENTI" }}
         </div>
       </div>
 
-      <!-- Points de victoire (grand cercle) -->
-      <div
-        class="absolute top-20 right-4 w-16 h-16 rounded-full bg-yellow-400 border-4 border-yellow-600 flex items-center justify-center shadow-lg z-10"
-      >
-        <div class="text-center">
-          <div class="text-2xl font-bold text-yellow-900">
-            {{ cardData.points }}
-          </div>
-          <div class="text-xs text-yellow-800 font-bold">PTS</div>
-        </div>
-      </div>
-
       <!-- Zone centrale -->
       <div
-        class="h-48 m-4 mt-20 bg-white bg-opacity-10 rounded-lg border-2 border-blue-400 backdrop-blur-sm flex items-center justify-center flex-shrink-0"
+        class="h-56 m-4 mt-6 bg-white bg-opacity-10 rounded-lg border-2 border-contract-light backdrop-blur-sm flex items-center justify-center flex-shrink-0"
       >
         <div class="text-6xl opacity-40">📜</div>
       </div>
@@ -128,28 +116,42 @@
       <!-- Conditions requises - prend toute la hauteur disponible -->
       <div class="mx-4 mb-4 flex-1 flex flex-col">
         <div
-          class="bg-white bg-opacity-95 p-4 rounded-lg shadow-md flex-1 flex flex-col"
+          class="bg-white bg-opacity-95 p-4 rounded-lg shadow-md flex-1 flex flex-col border-l-4 border-contract"
         >
-          <h4
-            class="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2 flex-shrink-0"
-          >
-            <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
-            CONDITIONS REQUISES
-          </h4>
+          <div class="flex items-center gap-3 mb-3 flex-shrink-0">
+            <div
+              class="w-8 h-8 bg-contract rounded-full flex items-center justify-center"
+            >
+              <span class="text-white text-sm font-bold">⚔</span>
+            </div>
+            <h4
+              class="text-base font-bold text-gray-800 uppercase tracking-wide"
+            >
+              CONDITIONS REQUISES
+            </h4>
+          </div>
           <div class="flex-1 flex items-center">
-            <p class="text-sm text-gray-800 font-medium leading-tight">
-              {{ cardData.requirements || "Aucune condition spécifiée" }}
-            </p>
+            <div class="w-full">
+              <div
+                class="bg-gray-50 p-3 rounded-md border-l-3 border-contract-light"
+              >
+                <p class="text-sm text-gray-800 font-medium leading-relaxed">
+                  {{ cardData.requirements || "Aucune condition spécifiée" }}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Badge niveau -->
+      <!-- Badge niveau avec points de victoire - maintenant sur toute la largeur -->
       <div
-        class="absolute bottom-2 left-2 px-3 py-1 rounded-full text-xs font-bold text-white shadow-md"
-        :class="contractLevels[cardData.level]?.bgColor || 'bg-blue-600'"
+        class="absolute bottom-2 left-2 right-2 px-3 py-2 rounded-lg text-sm font-bold text-white shadow-md text-center flex items-center justify-center gap-2"
+        :class="contractLevels[cardData.level]?.bgColor || 'bg-contract'"
       >
-        {{ contractLevels[cardData.level]?.name || "Apprenti" }}
+        <span>{{ contractLevels[cardData.level]?.name || "Apprenti" }}</span>
+        <span class="text-yellow-300">•</span>
+        <span>Points de victoire: {{ cardData.points || 0 }}</span>
       </div>
     </div>
 
