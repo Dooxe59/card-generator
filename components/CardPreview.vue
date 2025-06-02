@@ -24,7 +24,7 @@
 
       <!-- Zone d'illustration centrale avec icône de guilde -->
       <div
-        class="h-44 m-4 mt-6 bg-white bg-opacity-15 rounded-lg border-2 border-white border-opacity-30 backdrop-blur-sm flex items-center justify-center relative overflow-hidden flex-shrink-0"
+        class="h-4 m-4 mt-6 bg-white bg-opacity-15 rounded-lg border-2 border-white border-opacity-30 backdrop-blur-sm flex items-center justify-center relative overflow-hidden flex-shrink-0"
       >
         <div class="text-8xl opacity-80">
           {{ guildStyles[cardData.guild]?.icon || "🔨" }}
@@ -100,7 +100,7 @@
 
       <!-- Zone centrale -->
       <div
-        class="h-56 m-4 mt-6 bg-white bg-opacity-10 rounded-lg border-2 border-contract-light backdrop-blur-sm flex items-center justify-center flex-shrink-0"
+        class="h-5 m-4 mt-6 bg-white bg-opacity-10 rounded-lg border-2 border-contract-light backdrop-blur-sm flex items-center justify-center flex-shrink-0"
       >
         <div class="text-6xl opacity-40">📜</div>
       </div>
@@ -155,16 +155,9 @@
         </h2>
       </div>
 
-      <!-- Icône événement -->
-      <div
-        class="absolute top-20 right-4 w-12 h-12 rounded-full bg-white bg-opacity-90 flex items-center justify-center text-2xl shadow-lg"
-      >
-        ⚡
-      </div>
-
       <!-- Zone centrale -->
       <div
-        class="h-48 m-4 mt-16 bg-white bg-opacity-10 rounded-lg border-2 border-event-light backdrop-blur-sm flex items-center justify-center flex-shrink-0"
+        class="h-4 m-4 mt-16 bg-white bg-opacity-10 rounded-lg border-2 border-event-light backdrop-blur-sm flex items-center justify-center flex-shrink-0"
       >
         <div class="text-6xl opacity-50">⚡</div>
       </div>

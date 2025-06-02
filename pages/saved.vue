@@ -54,7 +54,7 @@
       </div>
 
       <!-- Filtres -->
-      <div class="bg-white rounded-lg shadow p-4 mb-8">
+      <div class="bg-white rounded-lg shadow p-4 my-4">
         <div class="flex flex-wrap gap-4 items-center">
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-1"
@@ -152,10 +152,7 @@
       </div>
 
       <!-- Grille des cartes -->
-      <div
-        v-else
-        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-      >
+      <div v-else class="grid grid-cols-3 gap-6">
         <div
           v-for="(card, index) in filteredCards"
           :key="index"
@@ -163,9 +160,7 @@
         >
           <!-- Prévisualisation miniature -->
           <div class="p-4 flex justify-center bg-gray-50">
-            <div class="transform scale-50 origin-top">
-              <CardPreview :card-data="card.data" :card-type="card.type" />
-            </div>
+            <CardPreview :card-data="card.data" :card-type="card.type" />
           </div>
 
           <!-- Informations de la carte -->
