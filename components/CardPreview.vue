@@ -62,20 +62,12 @@
         >
           <div class="flex items-start gap-2 mb-2 flex-shrink-0">
             <div
-              class="w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0"
-              :class="guildStyles[cardData.guild]?.bgColor || 'bg-red-600'"
-            >
-              <span class="text-white text-xs">{{
-                guildStyles[cardData.guild]?.icon || "🔨"
-              }}</span>
-            </div>
-            <div
-              class="text-xs font-bold text-gray-700 uppercase tracking-wide"
+              class="text-xs font-bold text-gray-700 underline uppercase tracking-wide"
             >
               EFFET SPÉCIAL
             </div>
           </div>
-          <div class="flex-1 flex items-center">
+          <div class="flex-1 flex items-baseline">
             <p class="text-xs text-gray-800 leading-tight font-medium">
               {{
                 cardData.effect === "-"
@@ -116,25 +108,20 @@
       <!-- Conditions requises - prend toute la hauteur disponible -->
       <div class="mx-4 mb-4 flex-1 flex flex-col">
         <div
-          class="bg-white bg-opacity-95 p-4 rounded-lg shadow-md flex-1 flex flex-col border-l-4 border-contract"
+          class="bg-white bg-opacity-95 p-4 rounded-lg shadow-md flex-1 flex flex-col border-contract"
         >
           <div class="flex items-center gap-3 mb-3 flex-shrink-0">
-            <div
-              class="w-8 h-8 bg-contract rounded-full flex items-center justify-center"
-            >
-              <span class="text-white text-sm font-bold">⚔</span>
-            </div>
-            <h4
-              class="text-base font-bold text-gray-800 uppercase tracking-wide"
-            >
-              CONDITIONS REQUISES
-            </h4>
-          </div>
-          <div class="flex-1 flex items-center">
-            <div class="w-full">
+            <div class="flex items-start gap-2 mb-2 flex-shrink-0">
               <div
-                class="bg-gray-50 p-3 rounded-md border-l-3 border-contract-light"
+                class="text-xs font-bold text-gray-700 uppercase underline tracking-wide"
               >
+                CONDITIONS REQUISES
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 flex items-baselineitems">
+            <div class="w-full">
+              <div class="bg-gray-50">
                 <p class="text-sm text-gray-800 font-medium leading-relaxed">
                   {{ cardData.requirements || "Aucune condition spécifiée" }}
                 </p>
@@ -149,8 +136,6 @@
         class="absolute bottom-2 left-2 right-2 px-3 py-2 rounded-lg text-sm font-bold text-white shadow-md text-center flex items-center justify-center gap-2"
         :class="contractLevels[cardData.level]?.bgColor || 'bg-contract'"
       >
-        <span>{{ contractLevels[cardData.level]?.name || "Apprenti" }}</span>
-        <span class="text-yellow-300">•</span>
         <span>Points de victoire: {{ cardData.points || 0 }}</span>
       </div>
     </div>
@@ -189,25 +174,19 @@
         <div
           class="bg-white bg-opacity-95 p-4 rounded-lg shadow-md flex-1 flex flex-col"
         >
-          <h4
-            class="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2 flex-shrink-0"
-          >
-            <span class="w-2 h-2 bg-purple-600 rounded-full"></span>
-            EFFET
-          </h4>
-          <div class="flex-1 flex items-center">
+          <div class="flex items-start gap-2 mb-2 flex-shrink-0">
+            <div
+              class="text-xs font-bold text-gray-700 underline uppercase tracking-wide"
+            >
+              EFFET
+            </div>
+          </div>
+          <div class="flex-1 flex items-baseline">
             <p class="text-sm text-gray-800 font-medium leading-tight">
               {{ cardData.effect || "Aucun effet spécifié" }}
             </p>
           </div>
         </div>
-      </div>
-
-      <!-- Badge événement -->
-      <div
-        class="absolute bottom-2 left-2 px-3 py-1 bg-purple-600 rounded-full text-xs font-bold text-white shadow-md"
-      >
-        ÉVÉNEMENT
       </div>
     </div>
   </div>
