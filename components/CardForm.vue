@@ -203,6 +203,7 @@
         Exporter PNG
       </button>
       <button
+        @click="saveCard"
         class="flex-1 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition-colors"
       >
         Sauvegarder
@@ -336,5 +337,47 @@ const presets = {
     { name: "Prospérité", effect: "Tout le monde gagne 3 pièces" },
     { name: "Fin des Temps", effect: "Dernier tour après cette manche !" },
   ],
+};
+
+// Computed pour les presets actuels
+const currentPresets = computed(() => {
+  return presets[cardType.value] || [];
+});
+
+// Fonction pour charger un preset
+const loadPresetCard = (event) => {
+  const presetIndex = event.target.value;
+  if (presetIndex !== "") {
+    const preset = currentPresets.value[presetIndex];
+    if (preset) {
+      emit("load-preset", preset);
+    }
+  }
+  // Reset le select
+  event.target.value = "";
+};
+
+// Fonction pour changer le type de carte
+const onCardTypeChange = () => {
+  // Optionnel: réinitialiser les dados quand on change de type
+};
+
+// Fonction de sauvegarde
+const saveCard = () => {
+  // Pour l'instant, on sauvegarde dans le localStorage
+  try {
+    const savedCards = JSON.parse(localStorage.getItem("saved-cards") || "[]");
+    const cardToSave = {
+      type: cardType.value,
+      data: { ...cardData.value },
+      savedAt: new Date().toISOString(),
+    };
+    savedCards.push(cardToSave);
+    localStorage.setItem("saved-cards", JSON.stringify(savedCards));
+    alert("Carte sauvegardée avec succès !");
+  } catch (error) {
+    console.error("Erreur lors de la sauvegarde:", error);
+    alert("Erreur lors de la sauvegarde de la carte");
+  }
 };
 </script>

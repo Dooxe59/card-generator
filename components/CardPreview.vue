@@ -143,11 +143,11 @@
     <!-- Carte Événement -->
     <div
       v-else-if="cardType === 'event'"
-      class="w-64 h-96 rounded-xl shadow-2xl relative overflow-hidden bg-gradient-to-br from-purple-700 to-purple-900 border-4 border-purple-600 flex flex-col"
+      class="w-64 h-96 rounded-xl shadow-2xl relative overflow-hidden bg-gradient-to-br from-purple-700 to-purple-900 border-4 border-event flex flex-col"
     >
       <!-- Header -->
       <div
-        class="bg-black bg-opacity-40 p-3 text-center border-b-2 border-purple-400 flex-shrink-0"
+        class="bg-event-light bg-opacity-90 p-3 text-center border-b-2 border-event-light flex-shrink-0"
       >
         <div class="text-purple-200 text-sm font-bold mb-1">ÉVÉNEMENT</div>
         <h2 class="text-white font-bold text-lg tracking-wider">
@@ -164,7 +164,7 @@
 
       <!-- Zone centrale -->
       <div
-        class="h-48 m-4 mt-16 bg-white bg-opacity-10 rounded-lg border-2 border-purple-400 backdrop-blur-sm flex items-center justify-center flex-shrink-0"
+        class="h-48 m-4 mt-16 bg-white bg-opacity-10 rounded-lg border-2 border-event-light backdrop-blur-sm flex items-center justify-center flex-shrink-0"
       >
         <div class="text-6xl opacity-50">⚡</div>
       </div>
