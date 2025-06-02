@@ -2,16 +2,16 @@
 @tailwind utilities;
 
 @layer components {
-  /* .card-gradient-forge {
-    @apply bg-gradient-to-br forge forge-light;
+  .card-gradient-forge {
+    background: linear-gradient(to bottom right, #c1440e, #e85d3d);
   }
   .card-gradient-commerce {
-    @apply bg-gradient-to-br from-commerce to-commerce-light;
+    background: linear-gradient(to bottom right, #d4af37, #f4d03f);
   }
   .card-gradient-artisanat {
-    @apply bg-gradient-to-br from-artisanat to-artisanat-light;
+    background: linear-gradient(to bottom right, #708090, #a9a9a9);
   }
   .card-gradient-nature {
-    @apply bg-gradient-to-br from-nature to-nature-light;
-  } */
+    background: linear-gradient(to bottom right, #228b22, #32cd32);
+  }
 }

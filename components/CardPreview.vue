@@ -6,7 +6,7 @@
       :class="[
         'w-64 h-96 rounded-xl shadow-2xl relative overflow-hidden border-4',
         guildStyles[cardData.guild]?.gradient || 'card-gradient-forge',
-        `border-${cardData.guild}`,
+        guildStyles[cardData.guild]?.borderColor || 'border-red-600',
       ]"
       style="print-color-adjust: exact"
     >
@@ -15,7 +15,7 @@
         class="bg-black bg-opacity-30 backdrop-blur-sm p-3 text-center border-b-2 border-white border-opacity-20"
       >
         <h2 class="text-white font-bold text-lg tracking-wider drop-shadow-lg">
-          {{ cardData.name.toUpperCase() }}
+          {{ cardData.name?.toUpperCase() || "ARTISAN" }}
         </h2>
       </div>
 
@@ -37,17 +37,13 @@
       <div
         class="h-44 m-4 mt-20 bg-white bg-opacity-15 rounded-lg border-2 border-white border-opacity-30 backdrop-blur-sm flex items-center justify-center relative overflow-hidden"
       >
-        <!-- Motif de fond -->
+        <!-- Motif de fond seulement -->
         <div class="absolute inset-0 opacity-10">
           <div class="w-full h-full flex items-center justify-center">
             <div class="text-8xl">
               {{ guildStyles[cardData.guild]?.icon || "🔨" }}
             </div>
           </div>
-        </div>
-        <!-- Illustration principale -->
-        <div class="relative z-10 text-6xl opacity-60 drop-shadow-lg">
-          {{ guildStyles[cardData.guild]?.icon || "🔨" }}
         </div>
       </div>
 
@@ -63,17 +59,17 @@
         </div>
       </div>
 
-      <!-- Zone d'effet -->
-      <div class="mx-4 mb-4">
+      <!-- Zone d'effet - prend toute la hauteur disponible -->
+      <div class="mx-4 mb-4 flex-1">
         <div
-          class="bg-white bg-opacity-95 p-3 rounded-lg shadow-md border border-gray-200"
+          class="bg-white bg-opacity-95 p-3 rounded-lg shadow-md border border-gray-200 h-full min-h-[60px]"
         >
           <div class="flex items-start gap-2 mb-1">
             <div
-              class="w-6 h-6 rounded-full flex items-center justify-center text-sm"
+              class="w-6 h-6 rounded-full flex items-center justify-center text-sm flex-shrink-0 mt-0.5"
               :class="guildStyles[cardData.guild]?.bgColor || 'bg-red-600'"
             >
-              <span class="text-white">{{
+              <span class="text-white text-xs">{{
                 guildStyles[cardData.guild]?.icon || "🔨"
               }}</span>
             </div>
@@ -101,14 +97,14 @@
     <!-- Carte Contrat -->
     <div
       v-else-if="cardType === 'contract'"
-      class="w-64 h-96 rounded-xl shadow-2xl relative overflow-hidden bg-gradient-to-br from-blue-800 to-blue-900 border-4 border-blue-700"
+      class="w-64 h-96 rounded-xl shadow-2xl relative overflow-hidden bg-gradient-to-br from-blue-800 to-blue-900 border-4 border-blue-700 flex flex-col"
     >
       <!-- Header -->
       <div
-        class="bg-black bg-opacity-40 p-3 text-center border-b-2 border-blue-400"
+        class="bg-black bg-opacity-40 p-3 text-center border-b-2 border-blue-400 flex-shrink-0"
       >
         <h2 class="text-white font-bold text-lg tracking-wider">
-          {{ cardData.name.toUpperCase() }}
+          {{ cardData.name?.toUpperCase() || "CONTRAT" }}
         </h2>
         <div class="text-blue-200 text-sm font-medium mt-1">
           CONTRAT
@@ -130,23 +126,27 @@
 
       <!-- Zone centrale -->
       <div
-        class="h-48 m-4 mt-20 bg-white bg-opacity-10 rounded-lg border-2 border-blue-400 backdrop-blur-sm flex items-center justify-center"
+        class="h-48 m-4 mt-20 bg-white bg-opacity-10 rounded-lg border-2 border-blue-400 backdrop-blur-sm flex items-center justify-center flex-shrink-0"
       >
         <div class="text-6xl opacity-40">📜</div>
       </div>
 
-      <!-- Conditions requises -->
-      <div class="mx-4 mb-4">
-        <div class="bg-white bg-opacity-95 p-4 rounded-lg shadow-md">
+      <!-- Conditions requises - prend toute la hauteur disponible -->
+      <div class="mx-4 mb-4 flex-1 flex flex-col">
+        <div
+          class="bg-white bg-opacity-95 p-4 rounded-lg shadow-md flex-1 flex flex-col"
+        >
           <h4
-            class="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2"
+            class="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2 flex-shrink-0"
           >
             <span class="w-2 h-2 bg-blue-600 rounded-full"></span>
             CONDITIONS REQUISES
           </h4>
-          <p class="text-sm text-gray-800 font-medium leading-tight">
-            {{ cardData.requirements || "Aucune condition spécifiée" }}
-          </p>
+          <div class="flex-1 flex items-center">
+            <p class="text-sm text-gray-800 font-medium leading-tight">
+              {{ cardData.requirements || "Aucune condition spécifiée" }}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -162,15 +162,15 @@
     <!-- Carte Événement -->
     <div
       v-else-if="cardType === 'event'"
-      class="w-64 h-96 rounded-xl shadow-2xl relative overflow-hidden bg-gradient-to-br from-purple-700 to-purple-900 border-4 border-purple-600"
+      class="w-64 h-96 rounded-xl shadow-2xl relative overflow-hidden bg-gradient-to-br from-purple-700 to-purple-900 border-4 border-purple-600 flex flex-col"
     >
       <!-- Header -->
       <div
-        class="bg-black bg-opacity-40 p-3 text-center border-b-2 border-purple-400"
+        class="bg-black bg-opacity-40 p-3 text-center border-b-2 border-purple-400 flex-shrink-0"
       >
         <div class="text-purple-200 text-sm font-bold mb-1">ÉVÉNEMENT</div>
         <h2 class="text-white font-bold text-lg tracking-wider">
-          {{ cardData.name.toUpperCase() }}
+          {{ cardData.name?.toUpperCase() || "ÉVÉNEMENT" }}
         </h2>
       </div>
 
@@ -183,23 +183,27 @@
 
       <!-- Zone centrale -->
       <div
-        class="h-48 m-4 mt-16 bg-white bg-opacity-10 rounded-lg border-2 border-purple-400 backdrop-blur-sm flex items-center justify-center"
+        class="h-48 m-4 mt-16 bg-white bg-opacity-10 rounded-lg border-2 border-purple-400 backdrop-blur-sm flex items-center justify-center flex-shrink-0"
       >
         <div class="text-6xl opacity-50">⚡</div>
       </div>
 
-      <!-- Effet de l'événement -->
-      <div class="mx-4 mb-4">
-        <div class="bg-white bg-opacity-95 p-4 rounded-lg shadow-md">
+      <!-- Effet de l'événement - prend toute la hauteur disponible -->
+      <div class="mx-4 mb-4 flex-1 flex flex-col">
+        <div
+          class="bg-white bg-opacity-95 p-4 rounded-lg shadow-md flex-1 flex flex-col"
+        >
           <h4
-            class="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2"
+            class="text-sm font-bold text-gray-700 mb-2 flex items-center gap-2 flex-shrink-0"
           >
             <span class="w-2 h-2 bg-purple-600 rounded-full"></span>
             EFFET
           </h4>
-          <p class="text-sm text-gray-800 font-medium leading-tight">
-            {{ cardData.effect || "Aucun effet spécifié" }}
-          </p>
+          <div class="flex-1 flex items-center">
+            <p class="text-sm text-gray-800 font-medium leading-tight">
+              {{ cardData.effect || "Aucun effet spécifié" }}
+            </p>
+          </div>
         </div>
       </div>
 
@@ -225,24 +229,28 @@ const guildStyles = {
   forge: {
     gradient: "card-gradient-forge",
     bgColor: "bg-red-600",
+    borderColor: "border-red-600",
     icon: "🔨",
     color: "#C1440E",
   },
   commerce: {
     gradient: "card-gradient-commerce",
     bgColor: "bg-yellow-600",
+    borderColor: "border-yellow-600",
     icon: "💰",
     color: "#D4AF37",
   },
   artisanat: {
     gradient: "card-gradient-artisanat",
     bgColor: "bg-slate-500",
+    borderColor: "border-slate-500",
     icon: "🛠",
     color: "#708090",
   },
   nature: {
     gradient: "card-gradient-nature",
     bgColor: "bg-green-600",
+    borderColor: "border-green-600",
     icon: "🌿",
     color: "#228B22",
   },
