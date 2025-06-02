@@ -1,0 +1,17 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@layer components {
+  /* .card-gradient-forge {
+    @apply bg-gradient-to-br forge forge-light;
+  }
+  .card-gradient-commerce {
+    @apply bg-gradient-to-br from-commerce to-commerce-light;
+  }
+  .card-gradient-artisanat {
+    @apply bg-gradient-to-br from-artisanat to-artisanat-light;
+  }
+  .card-gradient-nature {
+    @apply bg-gradient-to-br from-nature to-nature-light;
+  } */
+}
