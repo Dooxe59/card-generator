@@ -10,20 +10,13 @@
       ]"
       style="print-color-adjust: exact"
     >
-      <!-- Header avec nom -->
+      <!-- Header avec nom de l'artisan -->
       <div
         class="bg-black bg-opacity-30 backdrop-blur-sm p-3 text-center border-b-2 border-white border-opacity-20"
       >
         <h2 class="text-white font-bold text-lg tracking-wider drop-shadow-lg">
           {{ cardData.name?.toUpperCase() || "ARTISAN" }}
         </h2>
-      </div>
-
-      <!-- Coût (cercle en haut à gauche) -->
-      <div
-        class="absolute top-16 left-4 w-12 h-12 rounded-full bg-amber-100 border-3 border-amber-800 flex items-center justify-center text-2xl font-bold shadow-lg z-10"
-      >
-        <span class="text-amber-900">{{ cardData.cost }}</span>
       </div>
 
       <!-- Icône de guilde (cercle en haut à droite) -->
@@ -37,12 +30,17 @@
       <div
         class="h-44 m-4 mt-20 bg-white bg-opacity-15 rounded-lg border-2 border-white border-opacity-30 backdrop-blur-sm flex items-center justify-center relative overflow-hidden"
       >
-        <!-- Motif de fond seulement -->
-        <div class="absolute inset-0 opacity-10">
-          <div class="w-full h-full flex items-center justify-center">
-            <div class="text-8xl">
-              {{ guildStyles[cardData.guild]?.icon || "🔨" }}
-            </div>
+        <!-- Zone vide pour illustration -->
+      </div>
+
+      <!-- Section Coût -->
+      <div class="mx-4 mb-3">
+        <div
+          class="bg-amber-600 text-white px-3 py-2 rounded-lg text-center font-bold shadow-md border border-amber-700"
+        >
+          <div class="flex items-center justify-center gap-2">
+            <span class="text-sm">COÛT</span>
+            <span class="text-xl">{{ cardData.cost }}</span>
           </div>
         </div>
       </div>
@@ -59,7 +57,7 @@
         </div>
       </div>
 
-      <!-- Zone d'effet - prend toute la hauteur disponible -->
+      <!-- Zone d'effet -->
       <div class="mx-4 mb-4 flex-1">
         <div
           class="bg-white bg-opacity-95 p-3 rounded-lg shadow-md border border-gray-200 h-full min-h-[60px]"
@@ -84,13 +82,6 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Badge de coût en bas -->
-      <div
-        class="absolute bottom-2 left-2 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-sm font-bold shadow-md"
-      >
-        {{ cardData.cost }}
       </div>
     </div>
 
